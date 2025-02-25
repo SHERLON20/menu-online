@@ -638,7 +638,7 @@ def main(page:ft.Page):
                    alignment=ft.alignment.center,
                    offset=ft.Offset(x=0.3,y=0.1),
                    col={'md':6,'lg':6,'xs':5},
-                   url='https://wa.me/<5575998611227>',
+                   url='https://wa.me/<5575998621227>',
                    content=ft.Column(
                        controls=[
                            ft.Image(
