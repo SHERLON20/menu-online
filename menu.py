@@ -374,8 +374,8 @@ def main(page:ft.Page):
             padding=ft.padding.symmetric(horizontal=5),
             alignment=ft.alignment.center_left,
             options=[
-                ft.dropdown.Option(text='combinho kids  R$ 23.00'.upper()),
-                ft.dropdown.Option(text='combo barra 2  R$ 24.00'.upper()),
+                ft.dropdown.Option(text='combinho kids  R$ 25.00'.upper()),
+                ft.dropdown.Option(text='combo barra 2  R$ 70.00'.upper()),
             ]
         )
     ),
