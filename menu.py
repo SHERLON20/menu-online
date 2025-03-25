@@ -4,6 +4,7 @@ from subajuda import lanche,pedido,porcao,consulta_bd
 
 def main(page:ft.Page):
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+page.theme_mode = ft.ThemeMode.DARK
     def abrir_principal(e):
         page_principal.col['xs']=12
         page_artesanais.col['xs']=0
@@ -47,7 +48,7 @@ def main(page:ft.Page):
             consulta_bd(sql="INSERT INTO todos_pedidos ( pedido ) VALUES ( %s)",valores=(pedido,))
             print('enviou com sucesso')
     
-   def adiciona_item(e):
+    def adiciona_item(e):
         if e.control.parent.controls[0].value == None or e.control.parent.controls[1].content.value == None:
             mensagem(text='Por Favor Você Deve Selecionar A Quantidade E O Pedido Desejado Na Lista De Pedidos')
         else:
