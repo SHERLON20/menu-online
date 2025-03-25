@@ -47,16 +47,24 @@ def main(page:ft.Page):
             consulta_bd(sql="INSERT INTO todos_pedidos ( pedido ) VALUES ( %s)",valores=(pedido,))
             print('enviou com sucesso')
     
-    def adiciona_item(e):
+   def adiciona_item(e):
         if e.control.parent.controls[0].value == None or e.control.parent.controls[1].content.value == None:
             mensagem(text='Por Favor Você Deve Selecionar A Quantidade E O Pedido Desejado Na Lista De Pedidos')
         else:
             string=f'{e.control.parent.controls[0].value} - {e.control.parent.controls[1].content.value}'
+            separa=string.split()
+            numero = float(e.control.parent.controls[0].value[0])
+            real = float(separa[-1])
+            dinheiro = real * numero
+            numero_final=float(total.controls[1].value + dinheiro)
+            total.controls[1].value=round(numero_final,2)
+            total.update()
+            string_2=f'{e.control.parent.controls[0].value} - {separa[2]} {separa[3]} {round(dinheiro,2)}'
             pedido=ft.ResponsiveRow(
                     columns=12,
                     controls=[
                         ft.Container(
-                            content=ft.Text(value=string,color=ft.colors.YELLOW_600,weight=ft.FontWeight.BOLD,size=20),
+                            content=ft.Text(value=string_2,color=ft.colors.YELLOW_600,weight=ft.FontWeight.BOLD,size=20),
                             bgcolor=ft.colors.with_opacity(color=ft.colors.BLACK,opacity=1.0),
                             shadow=ft.BoxShadow(blur_radius=5,color=ft.colors.YELLOW_ACCENT_700),
                             padding=ft.padding.only(left=15,right=15,bottom=5,top=5),
@@ -72,13 +80,7 @@ def main(page:ft.Page):
             )
             
             campo_lista.content.controls[1].content.controls.append(pedido)
-            numero = float(e.control.parent.controls[0].value[0])
-            separa=string.split()
-            real = float(separa[-1])
-            dinheiro = real * numero
-            numero_final=float(total.controls[1].value + dinheiro)
-            total.controls[1].value=round(numero_final,2)
-            total.update()
+            
             campo_lista.update()
             campo_lanches.controls[0].value = None
             campo_lanches.controls[1].content.value=None
